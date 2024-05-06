@@ -354,6 +354,8 @@
 -analyzer:"E:/Unity/2022.3.22f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/Enemy.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/PowerUp.cs"
+"Assets/Scripts/RocketBehavior.cs"
 "Assets/Scripts/RotateCamera.cs"
 "Assets/Scripts/SpawnManager.cs"
 "Assets/Scripts/Spin.cs"

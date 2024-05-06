@@ -12,6 +12,11 @@ public class PlayerController : MonoBehaviour
     public bool hasPowerUp = false;
     public GameObject powerupIndicator;
 
+    public PowerUpType currentPowerUp = PowerUpType.None;
+    public GameObject rocketPrefab;
+    private GameObject tmpRocket;
+    private Coroutine powerupCountdown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,16 +32,28 @@ public class PlayerController : MonoBehaviour
 
         // Player nesnemizin altýndaki çember
         powerupIndicator.transform.position = transform.position + new Vector3(0, - 0.4f, 0);
+
+        if (currentPowerUp == PowerUpType.Rockets && Input.GetKeyDown(KeyCode.F))
+        {
+            LaunchRockets();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Powerup"))
         {
-            powerupIndicator.gameObject.SetActive(true);
             hasPowerUp = true;
+            currentPowerUp = other.gameObject.GetComponent<PowerUp>().powerUpType;
+            powerupIndicator.gameObject.SetActive(true);
             Destroy(other.gameObject);
             StartCoroutine(PowerupCountdownRoutine());
+
+            if (powerupCountdown != null)
+            {
+                StopCoroutine(powerupCountdown); 
+            }
+            powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
         }
     }
 
@@ -45,12 +62,13 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(7);
         hasPowerUp = false;
+        currentPowerUp = PowerUpType.None;
         powerupIndicator.gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Enemy") && hasPowerUp)
+        if(collision.gameObject.CompareTag("Enemy") && currentPowerUp == PowerUpType.Pushback)
         {
             // Düþman nesnenin collision deðerini alýr ve deðiþkene atar.
             Rigidbody enemyRigidBody = collision.gameObject.GetComponent<Rigidbody>();
@@ -62,7 +80,17 @@ public class PlayerController : MonoBehaviour
             enemyRigidBody.AddForce(awayFromPlayer * powerUpStrangth, ForceMode.Impulse);
 
 
-            Debug.Log("Player güçlendirme ile : " + collision.gameObject.name + " nesnesine çarptý " + hasPowerUp);
+            Debug.Log("Player güçlendirme ile : " + collision.gameObject.name + " nesnesine çarptý " + currentPowerUp.ToString());
+        }
+    }
+
+    // Roket
+    void LaunchRockets()
+    {
+        foreach (var enemy in FindObjectsOfType<Enemy>())
+        {
+            tmpRocket = Instantiate(rocketPrefab, transform.position + Vector3.up, Quaternion.identity);
+            tmpRocket.GetComponent<RocketBehavior>().Fire(enemy.transform);
         }
     }
 }
