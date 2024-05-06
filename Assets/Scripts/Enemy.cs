@@ -22,5 +22,10 @@ public class Enemy : MonoBehaviour
         // kendi konumunu çýkarýyor ve sürekli olarak bizi takip ediyor.
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
         enemyRb.AddForce(lookDirection * speed);
+
+        if(transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }

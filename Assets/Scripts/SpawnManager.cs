@@ -5,21 +5,42 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject enemyPrefabs;
+    public GameObject powerupPrefabs;
 
     private float spawnRange = 9.0f;
+
+    public int enemyCount;
+    public int waveNumber = 1;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
-        Instantiate(enemyPrefabs, GenerateSpawnPosition(), enemyPrefabs.transform.rotation);
+        SpawnEnemyWave(waveNumber);
+        Instantiate(powerupPrefabs, GenerateSpawnPosition(), powerupPrefabs.transform.rotation);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+        // Enemy objesinin uzunlugu kadarýný alýr.
+        enemyCount = FindObjectsOfType<Enemy>().Length;
+        if(enemyCount == 0)
+        {
+            waveNumber += 2;
+            SpawnEnemyWave(waveNumber);
+            Instantiate(powerupPrefabs, GenerateSpawnPosition(), powerupPrefabs.transform.rotation);
+        }
+    }
+
+    // Düþman spawn manager
+    void SpawnEnemyWave(int enemiesToSpawn)
+    {
+        for (int i = 0; i < enemiesToSpawn; i++)
+        {
+            Instantiate(enemyPrefabs, GenerateSpawnPosition(), enemyPrefabs.transform.rotation);
+        }
     }
 
     // Random spawn fonksiyonu

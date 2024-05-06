@@ -356,6 +356,7 @@
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/RotateCamera.cs"
 "Assets/Scripts/SpawnManager.cs"
+"Assets/Scripts/Spin.cs"
 -langversion:9.0
 
 /deterministic
