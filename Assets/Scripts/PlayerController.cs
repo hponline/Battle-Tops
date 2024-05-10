@@ -7,14 +7,19 @@ public class PlayerController : MonoBehaviour
     // FocalPoint'i odak noktasý alýp onun etrafýnda dönüyoruz
     private GameObject focalPoint;
     private Rigidbody playerRb;
-    private float powerUpStrangth = 30.0f;
+
+    // Ýtme gücü
+    private float powerUpStrangth = 70.0f;
     public float speed = 5.0f;
     public bool hasPowerUp = false;
+
     public GameObject powerupIndicator;
 
     public PowerUpType currentPowerUp = PowerUpType.None;
     public GameObject rocketPrefab;
     private GameObject tmpRocket;
+
+    // PowerUp sayacý
     private Coroutine powerupCountdown;
 
     // Start is called before the first frame update
@@ -27,11 +32,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MoveController();
+        Indicator();
+    }
+
+    // Yön hareketleri
+    public void MoveController()
+    {
+        // Yön hareketleri
         float forwardInput = Input.GetAxis("Vertical");
         playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
+    }
 
-        // Player nesnemizin altýndaki çember
-        powerupIndicator.transform.position = transform.position + new Vector3(0, - 0.4f, 0);
+    // Player nesnemizin altýndaki çember
+    public void Indicator()
+    {
+        powerupIndicator.transform.position = transform.position + new Vector3(0, -0.4f, 0);
 
         if (currentPowerUp == PowerUpType.Rockets && Input.GetKeyDown(KeyCode.F))
         {
@@ -39,6 +55,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // PowerUp döngümüz (Coroutine) 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Powerup"))
@@ -58,6 +75,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Güçlendiricimizi aldýktan sonra 7sn bekler ve baþa döner.
+    // PowerUp döngümüz (Coroutine) 
     IEnumerator PowerupCountdownRoutine()
     {
         yield return new WaitForSeconds(7);
@@ -70,17 +88,12 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy") && currentPowerUp == PowerUpType.Pushback)
         {
-            // Düþman nesnenin collision deðerini alýr ve deðiþkene atar.
             Rigidbody enemyRigidBody = collision.gameObject.GetComponent<Rigidbody>();
 
             // Düþman nesnesi konumundan player konumunu çýkartýr ve deðiþkene atar.
+            // Hedef takip sistemi
             Vector3 awayFromPlayer = enemyRigidBody.transform.position - transform.position;
-
-            // AddForce methodu ile itme/dürtme gerçekleþtirilir.
             enemyRigidBody.AddForce(awayFromPlayer * powerUpStrangth, ForceMode.Impulse);
-
-
-            Debug.Log("Player güçlendirme ile : " + collision.gameObject.name + " nesnesine çarptý " + currentPowerUp.ToString());
         }
     }
 

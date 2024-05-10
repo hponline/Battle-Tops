@@ -7,10 +7,10 @@ public class RocketBehavior : MonoBehaviour
     private Transform target;
     private float speed = 15.0f;
     private bool homing;
-
-    private float rocketStrength = 15.0f;
+    private float rocketStrength = 40.0f;
     private float aliveTimer = 5.0f;
 
+    // Rocket
     public void Fire(Transform newTarget)
     {
         target = homing ? target : newTarget;
@@ -18,9 +18,9 @@ public class RocketBehavior : MonoBehaviour
         Destroy(gameObject, aliveTimer);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Rocket yön bulma
         if (homing && target != null)
         {
             Vector3 moveDirection = (target.transform.position - transform.position).normalized;
@@ -42,6 +42,4 @@ public class RocketBehavior : MonoBehaviour
             }
         }
     }
-
-
 }
