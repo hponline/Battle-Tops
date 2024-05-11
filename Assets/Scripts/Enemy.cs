@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
 
     private float nextSpawn;
     private Rigidbody enemyRb;
-    private GameObject player;    
+    private GameObject player;
     private SpawnManager spawnManager;
 
 

@@ -17,38 +17,58 @@ public class SpawnManager : MonoBehaviour
 
     public static int roundSayac = 1;
 
+    public float delayTime = 3.0f;
+
+    public bool isStart = false;
+
     void Start()
     {
-        // Düþman spawn
-        SpawnEnemyWave(waveNumber);
-        int randomPowerup = Random.Range(0, powerupPrefabs.Length);
-        Instantiate(powerupPrefabs[randomPowerup], GenerateSpawnPosition(), powerupPrefabs[randomPowerup].transform.rotation);        
+        StartCoroutine(Delay());
+        
+
     }
 
 
     void Update()
     {
-        // Düþman sayacý
-        enemyCount = FindObjectsOfType<Enemy>().Length;
-        if(enemyCount == 0)
+        if (isStart == true)
         {
-            
-            waveNumber ++;
-
-            if (waveNumber % bossRound == 0)
+            // Düþman sayacý
+            enemyCount = FindObjectsOfType<Enemy>().Length;
+            if (enemyCount == 0)
             {
-                SpawnBossWave(waveNumber);
-            }
-            else
-            {
-                SpawnEnemyWave(waveNumber);
+
+                waveNumber++;
+
+                if (waveNumber % bossRound == 0)
+                {
+                    SpawnBossWave(waveNumber);
+                }
+                else
+                {
+                    SpawnEnemyWave(waveNumber);
+                }
+
+                int randomPowerup = Random.Range(0, powerupPrefabs.Length);
+                Instantiate(powerupPrefabs[randomPowerup], GenerateSpawnPosition(), powerupPrefabs[randomPowerup].transform.rotation);
+
+                roundSayac += 1;
             }
 
-            int randomPowerup = Random.Range(0, powerupPrefabs.Length);
-            Instantiate(powerupPrefabs[randomPowerup], GenerateSpawnPosition(), powerupPrefabs[randomPowerup].transform.rotation);
-
-            roundSayac += 1;
         }
+
+    }
+
+    // Delay
+    public IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(delayTime);
+        // Düþman spawn
+        SpawnEnemyWave(waveNumber);
+        int randomPowerup = Random.Range(0, powerupPrefabs.Length);
+        Instantiate(powerupPrefabs[randomPowerup], GenerateSpawnPosition(), powerupPrefabs[randomPowerup].transform.rotation);
+
+        isStart = true;
     }
 
     // Düþman spawn manager
@@ -57,7 +77,7 @@ public class SpawnManager : MonoBehaviour
         for (int i = 0; i < enemiesToSpawn; i++)
         {
             int randomEnemy = Random.Range(0, enemyPrefabs.Length);
-            Instantiate(enemyPrefabs [randomEnemy], GenerateSpawnPosition(), enemyPrefabs[randomEnemy].transform.rotation);
+            Instantiate(enemyPrefabs[randomEnemy], GenerateSpawnPosition(), enemyPrefabs[randomEnemy].transform.rotation);
         }
     }
 
@@ -92,9 +112,9 @@ public class SpawnManager : MonoBehaviour
     // Mini Düþman Spawn eder
     public void SpawnMiniEnemy(int amount)
     {
-        for(int i =0; i <amount; i++)
+        for (int i = 0; i < amount; i++)
         {
-            int randomMini= Random.Range(0,miniEnemyPrefabs.Length);
+            int randomMini = Random.Range(0, miniEnemyPrefabs.Length);
             Instantiate(miniEnemyPrefabs[randomMini], GenerateSpawnPosition(), miniEnemyPrefabs[randomMini].transform.rotation);
         }
     }

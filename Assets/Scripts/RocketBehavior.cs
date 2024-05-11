@@ -29,6 +29,7 @@ public class RocketBehavior : MonoBehaviour
         }
     }
 
+    // Rocket çarptýgý düþmaný geri iter
     private void OnCollisionEnter(Collision collision)
     {
         if (target != null)

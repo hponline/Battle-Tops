@@ -360,6 +360,7 @@
 "Assets/Scripts/RotateCamera.cs"
 "Assets/Scripts/SpawnManager.cs"
 "Assets/Scripts/Spin.cs"
+"Assets/Scripts/Timer.cs"
 "Assets/Scripts/UI.cs"
 -langversion:9.0
 
