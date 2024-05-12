@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     // PowerUp sayacý
     private Coroutine powerupCountdown;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -119,6 +119,7 @@ public class PlayerController : MonoBehaviour
             print("Scene restarted");
 
             SpawnManager.roundSayac = 0;
+            
             
         }                
     }
