@@ -137,9 +137,10 @@ GameObject:
   - component: {fileID: 7678971}
   - component: {fileID: 7678970}
   - component: {fileID: 7678975}
+  - component: {fileID: 7678976}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -274,6 +275,20 @@ MonoBehaviour:
   powerupIndicator: {fileID: 1722268018}
   currentPowerUp: 0
   rocketPrefab: {fileID: 1686957686555292729, guid: 62c95b605de8bb548ba715f010dafa54, type: 3}
+--- !u!114 &7678976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf857eda685481f429cf3a8f5dd897ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 7678974}
+  "s\u0131n\u0131rY": -50
 --- !u!1 &80059297
 GameObject:
   m_ObjectHideFlags: 0

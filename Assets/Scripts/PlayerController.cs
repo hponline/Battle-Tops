@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         MoveController();
         Indicator();
-        ResetScene();
+        
     }
 
     // Yön hareketleri
@@ -106,21 +106,5 @@ public class PlayerController : MonoBehaviour
             tmpRocket = Instantiate(rocketPrefab, transform.position + Vector3.up, Quaternion.identity);
             tmpRocket.GetComponent<RocketBehavior>().Fire(enemy.transform);
         }
-    }
-
-    // Sahne Resetleme
-    public void ResetScene()
-    {
-        float x = -340.0f;
-
-        if (playerRb.position.y < x )
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            print("Scene restarted");
-
-            SpawnManager.roundSayac = 0;
-            
-            
-        }                
     }
 }
