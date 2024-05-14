@@ -24,3 +24,14 @@ Topa yön vermek için <b>WASD</b> tuşlarını kullanabilirsiniz.
 <br>
 Her güçlendirme üzerimizde 7 saniye kalır. <b>Süreleri artmaz ve stacklenmez</b> ama değiştirilebilir.
  
+<hr>
+
+![game](https://github.com/hponline/Battle-Tops/assets/143675421/b785fd40-9108-4c4a-b48d-8cbe7f71471e)
+
+
+
+https://github.com/hponline/Battle-Tops/assets/143675421/8e2073a3-b6f6-40fb-a44b-f6dad038177d
+
+
+
+
