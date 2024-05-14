@@ -115,7 +115,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8848216651057396559}
   serializedVersion: 4
-  m_Mass: 4.34
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a1a9d08a85a9e4594888a37e533f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 14.35
+  speed: 11
   miniEnemySpawnCount: 0
   isBoss: 0
   spawnInterval: 0
