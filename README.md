@@ -1,6 +1,7 @@
 # Battle Tops
 
 Merhaba <b>Battle Tops</b> oyununa hoş geldiniz. Oyunun temel mekanikleri ve güçlendiricileri hakkında bilgi vermek istiyorum:
+<h3>Oyunu oynamak için >>> https://hponline.itch.io/battle-tops</h3>
 
 <h2>Oynanış:</h2>
 
