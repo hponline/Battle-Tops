@@ -43,6 +43,7 @@ public class SpawnManager : MonoBehaviour
                 if (waveNumber % bossRound == 0)
                 {
                     SpawnBossWave(waveNumber);
+                    SpawnEnemyWave(waveNumber);
                 }
                 else
                 {

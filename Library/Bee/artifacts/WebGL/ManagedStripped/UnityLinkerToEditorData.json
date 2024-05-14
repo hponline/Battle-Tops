@@ -389,6 +389,7 @@
           {
             "name": "Sprite",
             "scenes": [
+              "Assets/Scenes/Game.unity",
               "Assets/Scenes/Menu.unity"
             ],
             "dependencyType": 0,
