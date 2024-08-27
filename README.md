@@ -32,6 +32,19 @@ Her güçlendirme üzerimizde 7 saniye kalır. <b>Süreleri artmaz ve stacklenme
 
 https://github.com/hponline/Battle-Tops/assets/143675421/8e2073a3-b6f6-40fb-a44b-f6dad038177d
 
+<hr>
+<h4>Not<br>
+Patika eğitim platformunda Jr. Unity developer eğitimini alırken geliştirdigim bir proje,
+Bu projede 3 farklı Buff ve oyunun daha da zorlaşması için ufak bir Boss mekaniği mevcuttur.
 
+Projede öğrendiklerim.
+
+Nesne takibi,
+Sahne resetleme,
+Display timer,
+LoadScreen,
+PowerUp mantıgı,
+IEnumerator kullanımı,
+Coroutine,
 
 
